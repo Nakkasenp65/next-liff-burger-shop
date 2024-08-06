@@ -1,0 +1,19 @@
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .name {
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  .status {
+    font-size: 14px;
+    color: white;
+    padding: 3px 6px;
+    background-color: #2dbe57;
+    border-radius: 8px;
+  }
+}
