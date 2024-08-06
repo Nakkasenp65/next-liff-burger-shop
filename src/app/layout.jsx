@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import BasketProvider from "./context/BasketProvider";
+import LiffProvider from "./context/LiffProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <BasketProvider>{children}</BasketProvider>
+        <LiffProvider>{children}</LiffProvider>
       </body>
     </html>
   );
