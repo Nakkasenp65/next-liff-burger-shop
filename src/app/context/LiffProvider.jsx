@@ -1,14 +1,12 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import { liff } from "@line/liff";
-const liffId = process.env.NEXT_PUBLIC_LIFF_ID;
-let success = false;
 const LiffContext = createContext();
 
-const initLiff = async () => {
+async function initLiff() {
   try {
     const readyLiff = await liff.init({
-      liffId: "2005699675-EBxv8d2y",
+      liffId: process.env.NEXT_PUBLIC_LIFF_ID,
     });
     if (!liff.isLoggedIn()) {
       liff.login();
@@ -20,21 +18,19 @@ const initLiff = async () => {
   } catch (error) {
     console.error("liff init error: ", error.message);
   }
-};
+}
 
 export default function LiffProvider({ children }) {
+  const [success, setSuccess] = useState(false);
   const [profile, setProfile] = useState({});
 
   useEffect(() => {
     const liffProfile = initLiff();
     liffProfile.then((res) => {
       setProfile(res);
-      success = true;
-      console.log(res);
+      setSuccess(true);
     });
   }, []);
-
-  if (success) console.log(profile.userId);
 
   return (
     <LiffContext.Provider value={[success, profile, setProfile]}>
@@ -42,4 +38,6 @@ export default function LiffProvider({ children }) {
     </LiffContext.Provider>
   );
 }
-export const useLiffProfile = () => useContext(LiffContext);
+export function useLiffProfile() {
+  return useContext(LiffContext);
+}

@@ -1,9 +1,12 @@
-import Link from "next/link";
-import styles from "./page.scss";
+import Header from "./components/Ui/Header";
+import LinkItems from "./components/Ui/LinkItems";
+import CategoryItems from "./components/Ui/CategoryItems";
 export default function Home() {
   return (
-    <main className="container">
-      <Link href={"/firstPage"}>เข้าสู่เว็บไซต์</Link>
+    <main className="w-full min-h-screen flex flex-col justify-start items-start py-12 px-3 gap-6">
+      <Header />
+      <LinkItems />
+      <CategoryItems />
     </main>
   );
 }

@@ -1,8 +1,16 @@
 import { Inter } from "next/font/google";
+import { Noto_Sans_Thai } from "next/font/google";
 import "./globals.css";
 import LiffProvider from "./context/LiffProvider";
+import LoadingProvider from "./components/loadingProvider/LoadingProvider";
+import ShopScheduleProvider from "./context/ShopScheduleProvider";
 
 const inter = Inter({ subsets: ["latin"] });
+const notoSans = Noto_Sans_Thai({
+  subsets: ["thai"],
+  weights: [400],
+  display: "swap",
+});
 
 export const metadata = {
   title: "Unique Burger🍔",
@@ -12,8 +20,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <LiffProvider>{children}</LiffProvider>
+      <body className={notoSans.className}>
+        {/* <LiffProvider> */}
+        <ShopScheduleProvider>
+          {/* <LoadingProvider> */}
+          {children}
+          {/* </LoadingProvider> */}
+        </ShopScheduleProvider>
+        {/* </LiffProvider> */}
       </body>
     </html>
   );
