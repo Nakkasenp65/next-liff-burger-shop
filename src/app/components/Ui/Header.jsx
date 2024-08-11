@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
-// import { useShopSchedule } from "@/app/context/ShopScheduleProvider";
 
 export default function Header() {
   const [status, setStatus] = useState("เปิด");
@@ -16,7 +15,7 @@ export default function Header() {
     currentTimeHandler();
   }, []);
 
-  async function currentTimeHandler() {
+  function currentTimeHandler() {
     if (schedule) {
       let openTime = schedule.open.split(":")[0];
       let closeTime = schedule.close.split(":")[0];
