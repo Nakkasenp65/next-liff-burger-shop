@@ -1,22 +1,23 @@
 "use client";
-import Header from "@/app/components/Ui/Header";
+import { useState } from "react";
 import { useParams } from "next/navigation";
-import MenuItem from "@/app/components/Ui/MenuItem";
-import { BURGER } from "@/app/menuInfo";
+import DetailsPopUp from "@/app/components/Ui/DetailsPopUp";
+import MenuItems from "@/app/components/Ui/MenuItems";
 
 export default function Category() {
+  const [isPop, setIsPop] = useState(false);
+  const [popItem, setPopItem] = useState({});
   const { name } = useParams();
-  return (
-    <main className="w-full min-h-screen flex flex-col justify-start items-start py-12 px-3 gap-6">
-      <Header />
-      <span className="text-lg">หมวดหมู่ เบอเกอร์</span>
-      <section className="w-full flex flex-wrap justify-around items-start gap-4">
-        <MenuItem
-          menuName={"hamburger"}
-          menuDetails={"hamburger bro"}
-          menuPrice={"190.-"}
-        />
-      </section>
-    </main>
-  );
+
+  function handlePopup(item = {}) {
+    console.log("item:", item, "clicked!");
+    setPopItem(item);
+    setIsPop(!isPop);
+  }
+
+  if (isPop) {
+    return <DetailsPopUp item={popItem} handlePopup={handlePopup} />;
+  } else {
+    return <MenuItems paramsName={name} handlePopup={handlePopup} />;
+  }
 }

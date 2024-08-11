@@ -1,11 +1,27 @@
-export default function MenuItem({ menuName, menuDetails, menuPrice }) {
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import DetailsPopUp from "./DetailsPopUp";
+export default function MenuItem({ item, handlePopup, ...props }) {
   return (
-    <div className="flex flex-col">
-      <div className="bg-lightGreyBackground rounded-b-lg">
-        <span className="text-2xl">{menuPrice}</span>
-        <span className="text-sm font-bold">{menuName}</span>
-        <p className="text-sm text-zinc-400">{menuDetails}</p>
+    <motion.div whileTap={{ scale: 0.95 }}>
+      <div
+        className="relative w-32 flex flex-col flex-shrink gap-2"
+        onClick={handlePopup}
+      >
+        <Image
+          src={item.href}
+          alt="burger set menu"
+          width={300}
+          height={300}
+          priority
+          className="w-full h-auto rounded-lg"
+        />
+        <div className="flex flex-col rounded-b-lg">
+          <span className="text-base">{item.price} ฿</span>
+          <span className="text-sm font-bold">{item.name}</span>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

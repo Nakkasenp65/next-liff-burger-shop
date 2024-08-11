@@ -8,19 +8,19 @@ const ScheduleContext = createContext();
 export default function ShopScheduleProvider({ children }) {
   const [schedule, setSchedule] = useState({ open: "00:00", close: "00:00" });
 
-  const getSchedule = async () => {
-    // const docRef = doc(db, "schedule", "7uL2IDJlBKjHE3TmGHFe");
-    // const docSnap = await getDoc(docRef);
-    // if (docSnap.exists()) {
-    //   const { open, close } = docSnap.data();
-    //   setSchedule({ open, close });
-    //   console.log("Schedeul Context Success");
-    // }
-    setSchedule({ open: "12:00", close: "16:00" });
-  };
+  // const getSchedule = async () => {
+  //   const docRef = doc(db, "schedule", "7uL2IDJlBKjHE3TmGHFe");
+  //   const docSnap = await getDoc(docRef);
+  //   if (docSnap.exists()) {
+  //     const { open, close } = docSnap.data();
+  //     setSchedule({ open, close });
+  //     console.log("Schedeul Context Success");
+  //   }
+  //   setSchedule({ open: "11:00", close: "21:00" });
+  // };
 
   useEffect(() => {
-    getSchedule();
+    // getSchedule();
   }, []);
 
   return (

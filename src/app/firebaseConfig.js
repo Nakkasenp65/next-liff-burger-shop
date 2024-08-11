@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBzcmWo9V4vl8eB3QAsqoAmonKcvrHT0MM",
-  authDomain: "points-nextjs-firebase.firebaseapp.com",
-  projectId: "points-nextjs-firebase",
-  storageBucket: "points-nextjs-firebase.appspot.com",
-  messagingSenderId: "268723471613",
-  appId: "1:268723471613:web:d5d42fc4c7eb6381932a94",
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
