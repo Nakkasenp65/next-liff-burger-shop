@@ -1,12 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import DetailsPopUp from "./DetailsPopUp";
 export default function MenuItem({ item, handlePopup, ...props }) {
   return (
     <motion.div whileTap={{ scale: 0.95 }}>
       <div
-        className="relative w-32 flex flex-col flex-shrink gap-2"
+        className="relative w-full flex flex-col flex-shrink gap-2 "
         onClick={handlePopup}
       >
         <Image

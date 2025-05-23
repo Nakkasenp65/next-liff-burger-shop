@@ -15,6 +15,11 @@ export default function LiffProvider({ children }) {
         liff.login();
         console.log("POS:LIFF Login Success: " + liff.isLoggedIn());
       }
+      if (!liff.isLoggedIn()) {
+        console.log("FIRST LOGIN FAILED");
+        return null;
+      }
+
       const profile = await liff.getProfile();
       let liffProfile = { ...profile };
       return liffProfile;
